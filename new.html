@@ -1,0 +1,95 @@
+
+  
+    <div class="logo"
+         [style.background]="'url(assets/img/remember2.png)'"></div>
+    <div class="logo-text">When Did I Last?</div>
+    <!--    <ul nz-menu nzTheme="dark" nzMode="horizontal">-->
+    <!--      <li nz-menu-item>nav 1</li>-->
+    <!--    </ul>-->
+  
+  
+    <!--    <nz-breadcrumb>-->
+    <!--      <nz-breadcrumb-item>Home</nz-breadcrumb-item>-->
+    <!--      <nz-breadcrumb-item>List</nz-breadcrumb-item>-->
+    <!--      <nz-breadcrumb-item>App</nz-breadcrumb-item>-->
+    <!--    </nz-breadcrumb>-->
+    <div class="inner-content" >
+
+      <div style="clear: both; height: 0px;"></div>
+      <div nz-row nzType="flex" nzJustify="space-between">
+        <div nz-col [nzSpan]="1" >
+          <button nz-button nzType="primary" (click)="backThreeMonths()">Back</button>
+        </div>
+        <div nz-col [nzSpan]="1" >
+          <button nz-button nzType="danger" (click)="addItemUsed('')">Add Item</button>
+        </div>
+        <div nz-col [nzSpan]="1" >
+          <ng-container *ngIf="!showSearch; else backButton">
+            <button nz-button nzType="default" (click)="toggleSearch()">Search</button>
+          </ng-container>
+          <ng-template #backButton>
+            <button nz-button nzType="danger" (click)="toggleSearch()">Back</button>
+          </ng-template>
+        </div>
+        <nz-modal [(nzVisible)]="isVisible" nzTitle="Add Item Used" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+          <div nz-row >
+            <div nz-col [nzSpan]="12" >
+              <nz-select [(ngModel)]="selectedItem" nzAllowClear nzPlaceHolder="Select Item" >
+                <nz-option [nzValue]="item.id" [nzLabel]="item.title" *ngFor="let item of itemsList"></nz-option>
+              </nz-select>
+            </div>
+            <div nz-col [nzSpan]="12" >
+              <nz-date-picker [(ngModel)]="dateUsed" (ngModelChange)="onDateChanged($event)" [nzFormat]="dateFormat"></nz-date-picker>
+            </div>
+          </div>
+        </nz-modal>
+        <div nz-col [nzSpan]="1" [style.margin-right]="'44px'">
+          <button nz-button nzType="default" (click)="loadItemsUsed()">Today</button>
+        </div>
+      </div>
+      <div style="clear: both; height: 10px;"></div>
+      <ng-container *ngIf="!showSearch; else search">
+        <div nz-row nzType="flex"
+            nzJustify="space-around"
+            *ngFor="let week of billsDays; let i = index">
+            <div *ngFor="let day of week.days"
+                nz-col
+                nzXs="8"
+                nzSm="3"
+                [className]="day.showAsDay ? 'cal-day' : 'cal-day'"
+                (click)="dayClicked(day.Date)">
+                <span *ngIf="day.Month" class="month-name">{{ day.Month }} - </span><span style="font-weight: bold">{{ day.Day }}</span>
+                <ng-container *ngFor="let expense of expenses; let i = index">
+                <a class="cal-day-item"  [style.background-color]="expense.color" (click)="removeItemUsed(expense.id, $event)">
+                    {{ expense.item_name }}
+                </a>
+                </ng-container>
+                <div style="clear:both; height: 4px"></div>
+            </div>
+        </div>
+        <div [attr.id]="'top'"></div>
+      </ng-container>
+      <ng-template #search >
+        <input nz-input placeholder="Search" [(ngModel)]="keyword" (ngModelChange)="beginSearchItemsUsed()"  />
+        <ng-container *ngIf="searchItemsUsedList?.length">
+          <h3 [ngStyle]="{ 'margin-bottom.px': 16, 'margin-top.px': 16 }">Search Results</h3>
+          <ng-container *ngFor="let dates of searchItemsUsedList" >
+            <nz-list nzBordered [nzHeader]="Header">
+                <ng-container *ngFor="let item of dates.children">
+                  <nz-list-item >
+                    {{ item.item_name }}
+                  </nz-list-item>
+                </ng-container>
+            </nz-list>
+            <ng-template #Header >
+              <span [ngStyle]="{ 'font-weight': 'bold', 'font-size': '16px' }">{{ dates.date }}</span>
+            </ng-template>
+            <div style="clear: both; height: 16px"></div>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </div>
+  </nz-content>
+
+</nz-layout>
