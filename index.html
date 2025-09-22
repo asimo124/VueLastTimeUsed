@@ -56,80 +56,333 @@
         opacity: 0.5;
       }
 
-      /* Custom 14-column grid for calendar layout */
-      .row-14 {
+      /* Custom 84-column grid for calendar layout */
+      .row-84 {
         display: flex;
         flex-wrap: wrap;
         margin-right: -15px;
         margin-left: -15px;
       }
 
-      .col-14-1 {
-        flex: 0 0 7.14285714%;
-        max-width: 7.14285714%;
-      }
-      .col-14-2 {
-        flex: 0 0 14.28571429%;
-        max-width: 14.28571429%;
-      }
-      .col-14-3 {
-        flex: 0 0 21.42857143%;
-        max-width: 21.42857143%;
-      }
-      .col-14-4 {
-        flex: 0 0 28.57142857%;
-        max-width: 28.57142857%;
-      }
-      .col-14-5 {
-        flex: 0 0 35.71428571%;
-        max-width: 35.71428571%;
-      }
-      .col-14-6 {
-        flex: 0 0 42.85714286%;
-        max-width: 42.85714286%;
-      }
-      .col-14-7 {
-        flex: 0 0 50%;
-        max-width: 50%;
-      }
-      .col-14-8 {
-        flex: 0 0 57.14285714%;
-        max-width: 57.14285714%;
-      }
-      .col-14-9 {
-        flex: 0 0 64.28571429%;
-        max-width: 64.28571429%;
-      }
-      .col-14-10 {
-        flex: 0 0 71.42857143%;
-        max-width: 71.42857143%;
-      }
-      .col-14-11 {
-        flex: 0 0 78.57142857%;
-        max-width: 78.57142857%;
-      }
-      .col-14-12 {
-        flex: 0 0 85.71428571%;
-        max-width: 85.71428571%;
-      }
-      .col-14-13 {
-        flex: 0 0 92.85714286%;
-        max-width: 92.85714286%;
-      }
-      .col-14-14 {
-        flex: 0 0 100%;
-        max-width: 100%;
-      }
-
-      /* Column padding for 14-column system */
-      [class*="col-14-"] {
+      /* Column padding for 84-column system */
+      [class*="col-84-"] {
         position: relative;
         width: 100%;
         padding-right: 15px;
         padding-left: 15px;
       }
 
-      /* Calendar specific styles */
+      /* Extra small devices (portrait phones, less than 576px) */
+      .col-84-1 {
+        flex: 0 0 1.19047619%;
+        max-width: 1.19047619%;
+      }
+      .col-84-2 {
+        flex: 0 0 2.38095238%;
+        max-width: 2.38095238%;
+      }
+      .col-84-3 {
+        flex: 0 0 3.57142857%;
+        max-width: 3.57142857%;
+      }
+      .col-84-4 {
+        flex: 0 0 4.76190476%;
+        max-width: 4.76190476%;
+      }
+      .col-84-6 {
+        flex: 0 0 7.14285714%;
+        max-width: 7.14285714%;
+      }
+      .col-84-7 {
+        flex: 0 0 8.33333333%;
+        max-width: 8.33333333%;
+      }
+      .col-84-12 {
+        flex: 0 0 14.28571429%;
+        max-width: 14.28571429%;
+      }
+      .col-84-14 {
+        flex: 0 0 16.66666667%;
+        max-width: 16.66666667%;
+      }
+      .col-84-21 {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+      .col-84-28 {
+        flex: 0 0 33.33333333%;
+        max-width: 33.33333333%;
+      }
+      .col-84-42 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      .col-84-84 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      /* Small devices (landscape phones, 576px and up) */
+      @media (min-width: 576px) {
+        .col-84-sm-1 {
+          flex: 0 0 1.19047619%;
+          max-width: 1.19047619%;
+        }
+        .col-84-sm-2 {
+          flex: 0 0 2.38095238%;
+          max-width: 2.38095238%;
+        }
+        .col-84-sm-3 {
+          flex: 0 0 3.57142857%;
+          max-width: 3.57142857%;
+        }
+        .col-84-sm-4 {
+          flex: 0 0 4.76190476%;
+          max-width: 4.76190476%;
+        }
+        .col-84-sm-6 {
+          flex: 0 0 7.14285714%;
+          max-width: 7.14285714%;
+        }
+        .col-84-sm-7 {
+          flex: 0 0 8.33333333%;
+          max-width: 8.33333333%;
+        }
+        .col-84-sm-12 {
+          flex: 0 0 14.28571429%;
+          max-width: 14.28571429%;
+        }
+        .col-84-sm-14 {
+          flex: 0 0 16.66666667%;
+          max-width: 16.66666667%;
+        }
+        .col-84-sm-21 {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        .col-84-sm-28 {
+          flex: 0 0 33.33333333%;
+          max-width: 33.33333333%;
+        }
+        .col-84-sm-42 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        .col-84-sm-84 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+
+      /* Medium devices (tablets, 768px and up) */
+      @media (min-width: 768px) {
+        .col-84-md-1 {
+          flex: 0 0 1.19047619%;
+          max-width: 1.19047619%;
+        }
+        .col-84-md-2 {
+          flex: 0 0 2.38095238%;
+          max-width: 2.38095238%;
+        }
+        .col-84-md-3 {
+          flex: 0 0 3.57142857%;
+          max-width: 3.57142857%;
+        }
+        .col-84-md-4 {
+          flex: 0 0 4.76190476%;
+          max-width: 4.76190476%;
+        }
+        .col-84-md-6 {
+          flex: 0 0 7.14285714%;
+          max-width: 7.14285714%;
+        }
+        .col-84-md-7 {
+          flex: 0 0 8.33333333%;
+          max-width: 8.33333333%;
+        }
+        .col-84-md-12 {
+          flex: 0 0 14.28571429%;
+          max-width: 14.28571429%;
+        }
+        .col-84-md-14 {
+          flex: 0 0 16.66666667%;
+          max-width: 16.66666667%;
+        }
+        .col-84-md-21 {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        .col-84-md-28 {
+          flex: 0 0 33.33333333%;
+          max-width: 33.33333333%;
+        }
+        .col-84-md-42 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        .col-84-md-84 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+
+      /* Large devices (desktops, 992px and up) */
+      @media (min-width: 992px) {
+        .col-84-lg-1 {
+          flex: 0 0 1.19047619%;
+          max-width: 1.19047619%;
+        }
+        .col-84-lg-2 {
+          flex: 0 0 2.38095238%;
+          max-width: 2.38095238%;
+        }
+        .col-84-lg-3 {
+          flex: 0 0 3.57142857%;
+          max-width: 3.57142857%;
+        }
+        .col-84-lg-4 {
+          flex: 0 0 4.76190476%;
+          max-width: 4.76190476%;
+        }
+        .col-84-lg-6 {
+          flex: 0 0 7.14285714%;
+          max-width: 7.14285714%;
+        }
+        .col-84-lg-7 {
+          flex: 0 0 8.33333333%;
+          max-width: 8.33333333%;
+        }
+        .col-84-lg-12 {
+          flex: 0 0 14.28571429%;
+          max-width: 14.28571429%;
+        }
+        .col-84-lg-14 {
+          flex: 0 0 16.66666667%;
+          max-width: 16.66666667%;
+        }
+        .col-84-lg-21 {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        .col-84-lg-28 {
+          flex: 0 0 33.33333333%;
+          max-width: 33.33333333%;
+        }
+        .col-84-lg-42 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        .col-84-lg-84 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+
+      /* Extra large devices (large desktops, 1200px and up) */
+      @media (min-width: 1200px) {
+        .col-84-xl-1 {
+          flex: 0 0 1.19047619%;
+          max-width: 1.19047619%;
+        }
+        .col-84-xl-2 {
+          flex: 0 0 2.38095238%;
+          max-width: 2.38095238%;
+        }
+        .col-84-xl-3 {
+          flex: 0 0 3.57142857%;
+          max-width: 3.57142857%;
+        }
+        .col-84-xl-4 {
+          flex: 0 0 4.76190476%;
+          max-width: 4.76190476%;
+        }
+        .col-84-xl-6 {
+          flex: 0 0 7.14285714%;
+          max-width: 7.14285714%;
+        }
+        .col-84-xl-7 {
+          flex: 0 0 8.33333333%;
+          max-width: 8.33333333%;
+        }
+        .col-84-xl-12 {
+          flex: 0 0 14.28571429%;
+          max-width: 14.28571429%;
+        }
+        .col-84-xl-14 {
+          flex: 0 0 16.66666667%;
+          max-width: 16.66666667%;
+        }
+        .col-84-xl-21 {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        .col-84-xl-28 {
+          flex: 0 0 33.33333333%;
+          max-width: 33.33333333%;
+        }
+        .col-84-xl-42 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        .col-84-xl-84 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+
+      /* Extra extra large devices (larger desktops, 1400px and up) */
+      @media (min-width: 1400px) {
+        .col-84-xxl-1 {
+          flex: 0 0 1.19047619%;
+          max-width: 1.19047619%;
+        }
+        .col-84-xxl-2 {
+          flex: 0 0 2.38095238%;
+          max-width: 2.38095238%;
+        }
+        .col-84-xxl-3 {
+          flex: 0 0 3.57142857%;
+          max-width: 3.57142857%;
+        }
+        .col-84-xxl-4 {
+          flex: 0 0 4.76190476%;
+          max-width: 4.76190476%;
+        }
+        .col-84-xxl-6 {
+          flex: 0 0 7.14285714%;
+          max-width: 7.14285714%;
+        }
+        .col-84-xxl-7 {
+          flex: 0 0 8.33333333%;
+          max-width: 8.33333333%;
+        }
+        .col-84-xxl-12 {
+          flex: 0 0 14.28571429%;
+          max-width: 14.28571429%;
+        }
+        .col-84-xxl-14 {
+          flex: 0 0 16.66666667%;
+          max-width: 16.66666667%;
+        }
+        .col-84-xxl-21 {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        .col-84-xxl-28 {
+          flex: 0 0 33.33333333%;
+          max-width: 33.33333333%;
+        }
+        .col-84-xxl-42 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        .col-84-xxl-84 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+
+      /* Calendar specific styles with responsive adjustments */
       .calendar-week {
         display: flex;
         flex-wrap: wrap;
@@ -137,10 +390,38 @@
       }
 
       .calendar-day {
-        flex: 0 0 14.28571429%; /* 2 columns out of 14 = 14.28% */
-        max-width: 14.28571429%;
+        flex: 0 0 33.333333333%; /* Mobile first: 1 day per row (84 cols) */
+        max-width: 33.333333333%;
         padding: 5px;
         box-sizing: border-box;
+      }
+
+      @media (min-width: 576px) {
+        .calendar-day {
+          flex: 0 0 25%; /* Small: 2 days per row (42 cols each) */
+          max-width: 25%;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .calendar-day {
+          flex: 0 0 14.28571429%; /* Medium: 3 days per row (28 cols each) */
+          max-width: 14.28571429%;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .calendar-day {
+          flex: 0 0 14.28571429%; /* Medium-Large: 4 days per row (21 cols each) */
+          max-width: 14.28571429%;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .calendar-day {
+          flex: 0 0 14.28571429%; /* Large: 7 days per row (12 cols each) */
+          max-width: 14.28571429%;
+        }
       }
 
       .calendar-day-content {
@@ -157,18 +438,112 @@
         background-color: #f8f9fa;
       }
 
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
+      @media (min-width: 576px) {
+        .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          max-width: 720px;
+        }
+
+        #content {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
         .calendar-day {
-          flex: 0 0 50%; /* 2 days per row on mobile */
-          max-width: 50%;
+          padding-left: 2px;
+          padding-right: 2px;
         }
       }
 
-      @media (max-width: 480px) {
+      /* Medium devices (tablets, 768px and up) */
+      @media (min-width: 768px) {
+        .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          max-width: 940px;
+        }
+
+        #content {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
         .calendar-day {
-          flex: 0 0 100%; /* 1 day per row on very small screens */
-          max-width: 100%;
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+      }
+
+      /* Large devices (desktops, 992px and up) */
+      @media (min-width: 992px) {
+        .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        #content {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .calendar-day {
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+      }
+
+      /* Extra large devices (large desktops, 1200px and up) */
+      @media (min-width: 1200px) {
+        .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        #content {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .calendar-day {
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+      }
+
+      /* Extra extra large devices (larger desktops, 1400px and up) */
+      @media (min-width: 1400px) {
+        .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        #content {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .calendar-day {
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+      }
+
+      /* Remove container padding on small screens */
+      @media (max-width: 576px) {
+        .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        #content {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .calendar-day {
+          padding-left: 2px;
+          padding-right: 2px;
         }
       }
     </style>
