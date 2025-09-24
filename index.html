@@ -937,51 +937,198 @@
           };
         },
         methods: {
+          // API methods
+          async loadItemsUsed(daysBack = 0) {
+            try {
+              const requestParams = "daysBack=" + daysBack;
+              const response = await fetch(
+                "https://api.hawleywebdesign.com/last-time?" + requestParams
+              );
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
+              const data = await response.json();
+              this.billsDays = data; // Update the calendar data
+              console.log("Items used loaded successfully");
+            } catch (err) {
+              console.error("Error loading Items Used History:", err.message);
+            }
+          },
+
+          async searchItemUsed(keyword) {
+            try {
+              const requestParams = "keyword=" + keyword;
+              const response = await fetch(
+                "https://api.hawleywebdesign.com/last-time/search?" +
+                  requestParams
+              );
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
+              const data = await response.json();
+              this.searchItemsUsedList = data; // Update search results
+              console.log("Search completed successfully");
+            } catch (err) {
+              console.error("Error loading Items Used History:", err.message);
+            }
+          },
+
+          async loadItems() {
+            try {
+              const response = await fetch(
+                "https://api.hawleywebdesign.com/last-time/items"
+              );
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
+              const data = await response.json();
+              this.itemsList = data; // Update items list for dropdown
+              console.log("Items loaded successfully");
+            } catch (err) {
+              console.error("Error loading Items:", err.message);
+            }
+          },
+
+          async addItemUsedToAPI(itemId, dateUsed) {
+            if (!itemId || !dateUsed) {
+              console.warn("Item ID and date are required");
+              return false;
+            }
+
+            try {
+              const date = new Date(dateUsed);
+              const apiParams =
+                "item_id=" +
+                itemId +
+                "&date_used=" +
+                encodeURIComponent(date.toDateString());
+              const response = await fetch(
+                "https://api.hawleywebdesign.com/last-time/add-item-used?" +
+                  apiParams
+              );
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
+              const data = await response.json();
+              console.log("Added Item Used");
+              return true;
+            } catch (err) {
+              console.error("Error adding Item Used:", err.message);
+              return false;
+            }
+          },
+
+          async removeItemUsedFromAPI(id) {
+            if (!id) {
+              console.warn("ID is required");
+              return false;
+            }
+
+            try {
+              const apiParams = "id=" + id;
+              const response = await fetch(
+                "https://api.hawleywebdesign.com/last-time/delete-item-used?" +
+                  apiParams
+              );
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
+              const data = await response.json();
+              console.log("Deleted Item used");
+              return true;
+            } catch (err) {
+              console.error("Error deleting Item Used:", err.message);
+              return false;
+            }
+          },
+
           // Modal methods
           addItemUsed(item) {
             this.isVisible = true;
             this.selectedItem = "";
             this.dateUsed = new Date().toISOString().split("T")[0];
           },
-          handleOk() {
-            // Add logic to save the item
-            console.log("Save item:", this.selectedItem, this.dateUsed);
-            this.isVisible = false;
+
+          async handleOk() {
+            if (this.selectedItem && this.dateUsed) {
+              const success = await this.addItemUsedToAPI(
+                this.selectedItem,
+                this.dateUsed
+              );
+              if (success) {
+                this.isVisible = false;
+                this.selectedItem = "";
+                this.dateUsed = "";
+                // Reload the calendar data to show the new item
+                await this.loadItemsUsed();
+              }
+            } else {
+              console.warn("Please select an item and date");
+            }
           },
+
           handleCancel() {
             this.isVisible = false;
             this.selectedItem = "";
             this.dateUsed = "";
           },
+
           onDateChanged(event) {
             console.log("Date changed:", event.target.value);
           },
+
           // Navigation methods
-          backThreeMonths() {
+          async backThreeMonths() {
             console.log("Going back three months");
+            await this.loadItemsUsed(90); // Load items from 90 days back
           },
+
           toggleSearch() {
             this.showSearch = !this.showSearch;
+            if (!this.showSearch) {
+              this.keyword = "";
+              this.searchItemsUsedList = [];
+            }
           },
-          loadItemsUsed() {
-            console.log("Loading items for today");
-          },
+
           // Calendar methods
           dayClicked(date) {
             console.log("Day clicked:", date);
           },
-          removeItemUsed(id, event) {
+
+          async removeItemUsed(id, event) {
             event.stopPropagation();
-            console.log("Remove item:", id);
+            const success = await this.removeItemUsedFromAPI(id);
+            if (success) {
+              // Reload the calendar data to reflect the deletion
+              await this.loadItemsUsed();
+            }
           },
+
           // Search methods
-          beginSearchItemsUsed() {
-            console.log("Searching for:", this.keyword);
-            // Add search logic here
+          async beginSearchItemsUsed() {
+            if (this.keyword && this.keyword.length > 0) {
+              await this.searchItemUsed(this.keyword);
+            } else {
+              this.searchItemsUsedList = [];
+            }
           },
         },
-        mounted() {
+        async mounted() {
           console.log("Vue app mounted successfully!");
+          // Load initial data
+          await this.loadItems(); // Load items for dropdown
+          await this.loadItemsUsed(); // Load initial calendar data
         },
       }).mount("#app");
     </script>
